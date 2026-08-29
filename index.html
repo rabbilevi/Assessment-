@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Asexuality vs. Sexual Inhibition — Self-Assessment</title>
+  <style>
+    :root{
+      --ink:#1f2a33;
+      --muted:#667681;
+      --navy:#18324a;
+      --line:#cbd6dd;
+      --soft:#eef3f6;
+      --soft2:#f8fafb;
+      --warn:#fff8e8;
+      --warnline:#d7c48b;
+      --bg:#f3f6f8;
+      --white:#fff;
+      --shadow:0 12px 35px rgba(24,50,74,.12);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.45;
+    }
+    .page{
+      width:min(900px,calc(100% - 28px));
+      margin:28px auto 60px;
+    }
+    .card{
+      background:var(--white);
+      border:1px solid #e2e9ee;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    header{
+      padding:34px 32px 24px;
+      text-align:center;
+      border-bottom:1px solid #e6edf1;
+    }
+    h1{
+      margin:0;
+      color:var(--navy);
+      font-size:clamp(1.75rem,4vw,2.5rem);
+      line-height:1.08;
+    }
+    .subtitle{
+      margin:10px auto 0;
+      color:var(--muted);
+      max-width:680px;
+    }
+    main{padding:28px 32px 38px}
+    .info{
+      background:var(--soft);
+      border:1px solid #b8c7d1;
+      border-radius:12px;
+      padding:14px 16px;
+      margin-bottom:26px;
+    }
+    .privacy{
+      background:var(--warn);
+      border:1px solid var(--warnline);
+      border-radius:12px;
+      padding:14px 16px;
+      margin:18px 0 26px;
+    }
+    h2{
+      color:var(--navy);
+      font-size:1.2rem;
+      margin:28px 0 10px;
+    }
+    .section-note{
+      color:var(--muted);
+      font-size:.93rem;
+      margin-top:-4px;
+    }
+    .question{
+      border:1px solid var(--line);
+      border-radius:11px;
+      padding:14px 14px 12px;
+      margin:10px 0;
+      background:#fff;
+    }
+    .qtext{
+      font-weight:600;
+      margin:0 0 10px;
+    }
+    .scale{
+      display:grid;
+      grid-template-columns:repeat(5,minmax(0,1fr));
+      gap:7px;
+    }
+    .scale label{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:5px;
+      min-height:42px;
+      border:1px solid var(--line);
+      border-radius:9px;
+      cursor:pointer;
+      user-select:none;
+      background:var(--soft2);
+      font-size:.9rem;
+    }
+    .scale label:has(input:checked){
+      border-color:var(--navy);
+      background:#e6eef5;
+      font-weight:700;
+    }
+    input[type="radio"]{accent-color:var(--navy)}
+    textarea,input[type="text"],input[type="email"]{
+      width:100%;
+      border:1px solid var(--line);
+      border-radius:9px;
+      padding:10px 11px;
+      font:inherit;
+      background:white;
+    }
+    textarea{min-height:120px;resize:vertical}
+    .thought{
+      border:1px solid var(--line);
+      border-radius:12px;
+      overflow:hidden;
+      margin-top:12px;
+    }
+    .thought label{
+      display:block;
+      padding:13px 14px;
+      border-bottom:1px solid var(--line);
+      cursor:pointer;
+      background:#fff;
+    }
+    .thought label:last-child{border-bottom:0}
+    .thought label:has(input:checked){background:#edf3f7}
+    .thought small{display:block;color:var(--muted);margin:3px 0 0 25px}
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:26px;
+    }
+    button{
+      border:0;
+      border-radius:10px;
+      padding:12px 17px;
+      font:inherit;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .primary{background:var(--navy);color:white}
+    .secondary{background:#e9eff3;color:var(--navy)}
+    .ghost{background:white;color:var(--navy);border:1px solid var(--line)}
+    button:disabled{opacity:.5;cursor:not-allowed}
+    #results{
+      margin-top:28px;
+      display:none;
+    }
+    .result-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin:14px 0;
+    }
+    .metric{
+      border:1px solid var(--line);
+      border-radius:11px;
+      padding:13px;
+      background:var(--soft2);
+    }
+    .metric b{display:block;color:var(--navy);margin-bottom:4px}
+    .interpretation{
+      border-left:4px solid var(--navy);
+      background:var(--soft);
+      padding:14px 16px;
+      border-radius:8px;
+      margin:14px 0;
+    }
+    .fineprint{
+      color:var(--muted);
+      font-size:.86rem;
+      margin-top:18px;
+    }
+    .field-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:18px;
+    }
+    .field label{
+      display:block;
+      font-weight:700;
+      color:var(--navy);
+      margin-bottom:5px;
+      font-size:.93rem;
+    }
+
+    /* Password overlay */
+    #lockOverlay{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      background:rgba(14,28,40,.96);
+      backdrop-filter:blur(8px);
+    }
+    .lockbox{
+      width:min(430px,100%);
+      background:white;
+      border-radius:16px;
+      padding:28px;
+      box-shadow:0 18px 60px rgba(0,0,0,.28);
+      text-align:center;
+    }
+    .lockbox h2{margin:0 0 8px;font-size:1.5rem}
+    .lockbox p{color:var(--muted);margin:0 0 16px}
+    .password-row{display:flex;gap:8px}
+    .password-row input{flex:1}
+    .error{color:#a22b2b;font-size:.9rem;min-height:1.3em;margin-top:8px}
+    body.unlocked #lockOverlay{display:none}
+
+    @media (max-width:650px){
+      .page{width:min(100% - 16px,900px);margin-top:8px}
+      header,main{padding-left:18px;padding-right:18px}
+      .result-grid,.field-grid{grid-template-columns:1fr}
+      .scale{gap:5px}
+      .scale label{font-size:.82rem;padding:6px 2px;flex-direction:column}
+    }
+    @media print{
+      body{background:#fff}
+      .page{width:100%;margin:0}
+      .card{box-shadow:none;border:0}
+      .actions,.privacy,#lockOverlay{display:none!important}
+      #results{display:block!important}
+      .question{break-inside:avoid}
+    }
+  </style>
+</head>
+<body>
+  <div id="lockOverlay" aria-modal="true" role="dialog" aria-labelledby="lockTitle">
+    <div class="lockbox">
+      <h2 id="lockTitle">Private Assessment</h2>
+      <p>Enter the access code to continue.</p>
+      <div class="password-row">
+        <input id="passwordInput" type="password" inputmode="numeric" autocomplete="off" placeholder="Password" />
+        <button id="unlockBtn" class="primary" type="button">Unlock</button>
+      </div>
+      <div id="passwordError" class="error" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="card">
+      <header>
+        <h1>Asexuality vs. Sexual Inhibition</h1>
+        <p class="subtitle">A structured self-reflection worksheet. It is not a diagnostic test and does not determine anyone's sexual orientation.</p>
+      </header>
+
+      <main>
+        <div class="info">
+          <strong>How to answer:</strong> Rate each statement from <strong>0–4</strong>:
+          0 = never / not at all, 1 = rarely, 2 = sometimes, 3 = often, 4 = very strongly / consistently.
+          The value is in the pattern, not in a single total score.
+        </div>
+
+        <div class="privacy">
+          <strong>Privacy:</strong> Answers stay in this browser until you choose to email or copy them.
+          The password gate is only a light privacy barrier; because GitHub Pages is static, the password can be discovered by someone inspecting the source code.
+        </div>
+
+        <form id="assessmentForm">
+          <div id="questions"></div>
+
+          <h2>24. Thought experiment</h2>
+          <p>Imagine there is <strong>zero judgment, zero religious or social expectation, perfect privacy, complete emotional safety, no risk of pregnancy or disease, and a partner you deeply trust who wants nothing from you except what you genuinely want.</strong></p>
+          <p>Which response feels closest?</p>
+
+          <div class="thought">
+            <label>
+              <input type="radio" name="thought" value="I still don't particularly want sex." />
+              “I still don't particularly want sex.”
+              <small>This may point more toward asexuality or naturally low sexual desire.</small>
+            </label>
+            <label>
+              <input type="radio" name="thought" value="I think I would want it, but something normally stops me." />
+              “I think I would want it, but something normally stops me.”
+              <small>This may point more toward inhibition or repression.</small>
+            </label>
+            <label>
+              <input type="radio" name="thought" value="I want affection and closeness, but sexual contact itself doesn't interest me." />
+              “I want affection and closeness, but sexual contact itself doesn't interest me.”
+              <small>This can fit an asexual-spectrum experience.</small>
+            </label>
+            <label>
+              <input type="radio" name="thought" value="I definitely experience attraction and fantasies; I just have enormous difficulty permitting or expressing them." />
+              “I definitely experience attraction and fantasies; I just have enormous difficulty permitting or expressing them.”
+              <small>This weighs more toward repression or inhibition than asexuality.</small>
+            </label>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="participantName">Name or initials (optional)</label>
+              <input id="participantName" type="text" autocomplete="off" />
+            </div>
+            <div class="field">
+              <label for="participantEmail">Participant email (optional)</label>
+              <input id="participantEmail" type="email" autocomplete="off" />
+            </div>
+          </div>
+
+          <h2>Personal notes</h2>
+          <textarea id="notes" placeholder="Optional observations, context, or questions..."></textarea>
+
+          <div class="actions">
+            <button class="primary" type="submit">Calculate Results</button>
+            <button class="secondary" type="button" id="clearBtn">Clear Form</button>
+          </div>
+        </form>
+
+        <section id="results" aria-live="polite">
+          <h2>Results Summary</h2>
+          <div class="result-grid" id="resultGrid"></div>
+          <div class="interpretation" id="interpretation"></div>
+
+          <div class="actions">
+            <button class="primary" id="emailBtn" type="button">Email Results</button>
+            <button class="secondary" id="copyBtn" type="button">Copy Results</button>
+            <button class="ghost" id="printBtn" type="button">Print</button>
+          </div>
+
+          <p class="fineprint">
+            “Email Results” opens the device's default email app with a pre-addressed draft. A static GitHub Pages site cannot securely send email by itself without a third-party service or backend.
+          </p>
+        </section>
+      </main>
+    </div>
+  </div>
+
+<script>
+  // -----------------------------
+  // Simple site configuration
+  // -----------------------------
+  const ACCESS_PASSWORD = "0770";
+
+  // I interpreted the address supplied as leviperelmuter@gmail.com.
+  // Change this one line if the intended address is different.
+  const RECIPIENT_EMAIL = "leviperelmuter@gmail.com";
+
+  const sections = [
+    {
+      key: "attraction",
+      title: "Sexual attraction",
+      questions: [
+        "I spontaneously feel sexually drawn to particular people.",
+        "I look at someone and genuinely want sexual contact with that person.",
+        "I experience sexual fantasies involving real or imagined partners that I would actually like to enact.",
+        "I experience “sexual chemistry” or tension with people.",
+        "I have had periods in my life when sexual attraction was clearly present, even if I did not act on it."
+      ]
+    },
+    {
+      key: "desire",
+      title: "Sexual desire separate from attraction",
+      questions: [
+        "I experience physical sexual arousal or libido even when no particular person is involved.",
+        "I masturbate or feel an urge for sexual release because it is intrinsically pleasurable.",
+        "Sexual thoughts arise spontaneously rather than only when I deliberately try to generate them.",
+        "When sex is unavailable for a long time, I miss sexual activity itself.",
+        "Sexual pleasure feels rewarding enough that I naturally want to repeat it."
+      ]
+    },
+    {
+      key: "inhibition",
+      title: "Inhibition / repression",
+      questions: [
+        "Sexual thoughts or arousal make me uncomfortable, guilty, embarrassed, frightened, or “wrong.”",
+        "I notice myself quickly suppressing sexual fantasies when they arise.",
+        "I have learned, explicitly or implicitly, that sexual desire is dangerous, shameful, selfish, immodest, or morally suspect.",
+        "I become more sexually interested when I feel completely safe, private, accepted, and free from expectations.",
+        "I sometimes want sexual intimacy but have difficulty initiating it, asking for what I want, or letting myself enjoy it.",
+        "I can feel desire in fantasy but lose it when another person is actually present.",
+        "I worry about being judged for what turns me on.",
+        "I sometimes experience a strong internal “brake” even while another part of me wants intimacy."
+      ]
+    },
+    {
+      key: "indifference",
+      title: "Indifference versus avoidance",
+      questions: [
+        "If there were absolutely no social pressure to have sex, I would probably be perfectly content never having it.",
+        "The prospect of never having sex again feels more neutral than upsetting.",
+        "My lack of sexual activity feels like an authentic preference rather than something I am fighting against.",
+        "I do not feel that there is a hidden sexual part of myself that I am struggling to access.",
+        "Sexual relationships mostly seem interesting to me because of companionship, affection, or pleasing a partner — not because I personally crave sexual contact."
+      ]
+    }
+  ];
+
+  const questionsEl = document.getElementById("questions");
+  let questionNumber = 1;
+
+  sections.forEach(section => {
+    const h = document.createElement("h2");
+    h.textContent = section.title;
+    questionsEl.appendChild(h);
+
+    section.questions.forEach((text, idx) => {
+      const qid = `q${questionNumber}`;
+      const wrap = document.createElement("div");
+      wrap.className = "question";
+      wrap.dataset.section = section.key;
+      wrap.innerHTML = `
+        <p class="qtext">${questionNumber}. ${text}</p>
+        <div class="scale" role="radiogroup" aria-label="Question ${questionNumber}">
+          ${[0,1,2,3,4].map(n => `
+            <label><input type="radio" name="${qid}" value="${n}" required> ${n}</label>
+          `).join("")}
+        </div>`;
+      questionsEl.appendChild(wrap);
+      questionNumber++;
+    });
+  });
+
+  // Password overlay
+  const passwordInput = document.getElementById("passwordInput");
+  const passwordError = document.getElementById("passwordError");
+
+  function unlock(){
+    if(passwordInput.value === ACCESS_PASSWORD){
+      document.body.classList.add("unlocked");
+      sessionStorage.setItem("assessmentUnlocked","yes");
+      passwordError.textContent = "";
+    } else {
+      passwordError.textContent = "Incorrect password.";
+      passwordInput.select();
+    }
+  }
+
+  document.getElementById("unlockBtn").addEventListener("click", unlock);
+  passwordInput.addEventListener("keydown", e => {
+    if(e.key === "Enter") unlock();
+  });
+  if(sessionStorage.getItem("assessmentUnlocked") === "yes"){
+    document.body.classList.add("unlocked");
+  }
+
+  function getAnswer(name){
+    const checked = document.querySelector(`input[name="${name}"]:checked`);
+    return checked ? Number(checked.value) : null;
+  }
+
+  function sectionScore(section){
+    let total = 0;
+    let count = 0;
+    let n = 1;
+    for(const s of sections){
+      for(const _q of s.questions){
+        if(s.key === section.key){
+          const v = getAnswer(`q${n}`);
+          if(v !== null){ total += v; count++; }
+        }
+        n++;
+      }
+    }
+    return { total, count, avg: count ? total / count : 0 };
+  }
+
+  function interpret(scores){
+    const a = scores.attraction.avg;
+    const d = scores.desire.avg;
+    const i = scores.inhibition.avg;
+    const x = scores.indifference.avg;
+
+    if(a <= 1.2 && d <= 1.5 && x >= 2.6 && i < 2.5){
+      return "<strong>Pattern more consistent with an asexual-spectrum experience:</strong> sexual attraction and desire appear relatively low, while contentment without sex is relatively high. This is not a diagnosis or a required identity label.";
+    }
+    if((a >= 2.0 || d >= 2.0) && i >= 2.4){
+      return "<strong>Pattern more consistent with sexual inhibition or repression:</strong> attraction or desire appears to be present, but there is also a substantial internal brake, discomfort, suppression, or difficulty permitting/expressing sexuality.";
+    }
+    if(a <= 1.5 && d <= 1.5 && x < 2.6){
+      return "<strong>Low-desire or unclear pattern:</strong> attraction/desire scores are low, but the pattern is not clearly one of contented asexuality. Stress, medications, hormones, depression, relationship factors, pain, exhaustion, or other contributors may be worth considering.";
+    }
+    if(a >= 2.0 && d >= 2.0 && i < 2.0){
+      return "<strong>Sexuality appears relatively accessible:</strong> attraction and/or desire are present without a particularly strong inhibition score. If there is still dissatisfaction, relationship context, technique, emotional safety, pain, or other factors may be more relevant.";
+    }
+    return "<strong>Mixed or unclear pattern:</strong> the responses do not fall neatly into one category. Sexual attraction can be infrequent, contextual, or dependent on emotional connection. The pattern and lived experience matter more than a label.";
+  }
+
+  function buildPlainText(scores){
+    const name = document.getElementById("participantName").value.trim();
+    const participantEmail = document.getElementById("participantEmail").value.trim();
+    const thought = document.querySelector('input[name="thought"]:checked')?.value || "No response";
+    const notes = document.getElementById("notes").value.trim() || "None";
+
+    let lines = [];
+    lines.push("ASEXUALITY VS. SEXUAL INHIBITION — SELF-ASSESSMENT RESULTS");
+    lines.push("");
+    if(name) lines.push(`Name/initials: ${name}`);
+    if(participantEmail) lines.push(`Participant email: ${participantEmail}`);
+    if(name || participantEmail) lines.push("");
+
+    lines.push("SECTION SCORES");
+    for(const s of sections){
+      const score = scores[s.key];
+      lines.push(`${s.title}: ${score.total}/${score.count*4} (average ${score.avg.toFixed(2)} of 4)`);
+    }
+
+    lines.push("");
+    lines.push("THOUGHT EXPERIMENT");
+    lines.push(thought);
+    lines.push("");
+    lines.push("INDIVIDUAL RESPONSES");
+
+    let n = 1;
+    for(const s of sections){
+      lines.push("");
+      lines.push(s.title.toUpperCase());
+      for(const q of s.questions){
+        lines.push(`${n}. ${getAnswer(`q${n}`)} — ${q}`);
+        n++;
+      }
+    }
+
+    lines.push("");
+    lines.push("PERSONAL NOTES");
+    lines.push(notes);
+    lines.push("");
+    lines.push("Reminder: This is a self-reflection tool, not a diagnostic test.");
+
+    return lines.join("\n");
+  }
+
+  let lastScores = null;
+  let lastText = "";
+
+  document.getElementById("assessmentForm").addEventListener("submit", e => {
+    e.preventDefault();
+
+    if(!e.currentTarget.reportValidity()) return;
+
+    const scores = {};
+    sections.forEach(s => scores[s.key] = sectionScore(s));
+    lastScores = scores;
+    lastText = buildPlainText(scores);
+
+    const grid = document.getElementById("resultGrid");
+    grid.innerHTML = sections.map(s => {
+      const score = scores[s.key];
+      return `
+        <div class="metric">
+          <b>${s.title}</b>
+          ${score.total}/${score.count*4}<br>
+          <span>Average: ${score.avg.toFixed(2)} / 4</span>
+        </div>`;
+    }).join("");
+
+    document.getElementById("interpretation").innerHTML = interpret(scores);
+    const results = document.getElementById("results");
+    results.style.display = "block";
+    results.scrollIntoView({behavior:"smooth",block:"start"});
+  });
+
+  document.getElementById("emailBtn").addEventListener("click", () => {
+    if(!lastText) return;
+    const subject = "Asexuality vs. Sexual Inhibition — Assessment Results";
+    const href = `mailto:${encodeURIComponent(RECIPIENT_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lastText)}`;
+    window.location.href = href;
+  });
+
+  document.getElementById("copyBtn").addEventListener("click", async () => {
+    if(!lastText) return;
+    try{
+      await navigator.clipboard.writeText(lastText);
+      const btn = document.getElementById("copyBtn");
+      const old = btn.textContent;
+      btn.textContent = "Copied";
+      setTimeout(() => btn.textContent = old, 1400);
+    }catch{
+      alert("Copy failed. You can select and copy the results manually.");
+    }
+  });
+
+  document.getElementById("printBtn").addEventListener("click", () => window.print());
+
+  document.getElementById("clearBtn").addEventListener("click", () => {
+    if(!confirm("Clear all assessment answers?")) return;
+    document.getElementById("assessmentForm").reset();
+    document.getElementById("results").style.display = "none";
+    lastScores = null;
+    lastText = "";
+    window.scrollTo({top:0,behavior:"smooth"});
+  });
+</script>
+</body>
+</html>
